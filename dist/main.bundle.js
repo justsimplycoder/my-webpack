@@ -1,1 +1,1 @@
-console.log("test");
+(()=>{const e=document.createElement("h1");e.textContent="Webpack start!",document.querySelector("#root").append(e)})();
