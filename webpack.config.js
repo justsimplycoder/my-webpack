@@ -14,6 +14,17 @@ module.exports = {
 		path: path.resolve(__dirname, './dist'),
 		filename: '[name].bundle.js',
 	},
+	// модули и загрузчики
+	module: {
+		rules: [
+			// JavaScript
+			{
+					test: /\.js$/,
+					exclude: /node_modules/,
+					use: ['babel-loader'],
+			},
+		],
+	},
 	// плагины
 	plugins: [
 		// Плагин очистки директории dist при каждой сборке
@@ -22,7 +33,7 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			title: 'Заголовок страницы',
 			template: path.resolve(__dirname, './src/template.html'), // шаблон
-			filename: 'index-new.html', // название выходного файла
+			filename: 'index.html', // название выходного файла
 		}),
 	],
 }
