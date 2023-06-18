@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
 	// режим разработки 'development', 'production', 'none'
@@ -15,11 +16,13 @@ module.exports = {
 	},
 	// плагины
 	plugins: [
+		// Плагин очистки директории dist при каждой сборке
+		new CleanWebpackPlugin(),
 		// Плагин создания HTML на основе шаблона
 		new HtmlWebpackPlugin({
 			title: 'Заголовок страницы',
 			template: path.resolve(__dirname, './src/template.html'), // шаблон
-			filename: 'index.html', // название выходного файла
+			filename: 'index-new.html', // название выходного файла
 		}),
 	],
 }
