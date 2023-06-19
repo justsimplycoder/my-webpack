@@ -7,7 +7,10 @@ module.exports = {
 	mode: 'production',
 	// точка входа
 	entry: {
+		// Точка входа для javascript
 		main: path.resolve(__dirname, './src/index.js'),
+		// Точка входа для typescript
+		app: path.resolve(__dirname, './src/index.ts'),
 	},
 	// точка выхода
 	output: {
@@ -23,7 +26,18 @@ module.exports = {
 					exclude: /node_modules/,
 					use: ['babel-loader'],
 			},
+			// TypeScript
+			{
+				test: /\.tsx?$/,
+				use: 'ts-loader',
+				exclude: /node_modules/,
+			},
 		],
+	},
+	// Разрешения модулей
+	resolve: {
+		// Порядок разрешения
+		extensions: ['.tsx', '.ts', '.js'],
 	},
 	// плагины
 	plugins: [
