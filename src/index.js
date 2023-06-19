@@ -1,3 +1,5 @@
+import logoGitHub from './img/logo-github.svg';
+
 class Game {
 	name = 'Game name!!!!!'
 }
