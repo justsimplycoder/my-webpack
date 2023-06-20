@@ -58,6 +58,11 @@ module.exports = {
 					filename: 'img/[name][ext]'
 				}
 			},
+			// CSS, PostCSS, Sass
+			{
+				test: /\.(scss|css)$/,
+				use: ['style-loader', 'css-loader', 'postcss-loader', 'sass-loader'],
+			},
 		],
 	},
 	// плагины

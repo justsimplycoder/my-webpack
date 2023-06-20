@@ -1,4 +1,5 @@
 import logoGitHub from './img/logo-github.svg';
+import './styles/main.scss';
 
 class Game {
 	name = 'Game name!!!!!'
