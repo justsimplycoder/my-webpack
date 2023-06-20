@@ -1,6 +1,6 @@
-let headingText: string = "Заголовок второго уровня.";
+let headingText: string = "Заголовок первого уровня.";
 
-const heading2 = document.createElement('h2');
-heading2.textContent = headingText;
+const heading = document.createElement('h1');
+heading.textContent = headingText;
 const root = document.querySelector('#root');
-root.append(heading2);
+root.append(heading);

@@ -7,27 +7,17 @@ module.exports = {
 	mode: 'production',
 	// точка входа
 	entry: {
-		// Точка входа для javascript
-		main: path.resolve(__dirname, './src/index.js'),
 		// Точка входа для typescript
-		app: path.resolve(__dirname, './src/index.ts'),
+		main: path.resolve(__dirname, './src/index.ts'),
 	},
 	// точка выхода
 	output: {
 		path: path.resolve(__dirname, './dist'),
 		filename: '[name].bundle.js',
-		// assetModuleFilename: 'assets/[query][name][ext]'
-		// assetModuleFilename: 'assets/[file]'
 	},
 	// модули и загрузчики
 	module: {
 		rules: [
-			// JavaScript
-			{
-					test: /\.js$/,
-					exclude: /node_modules/,
-					use: ['babel-loader'],
-			},
 			// TypeScript
 			{
 				test: /\.tsx?$/,
