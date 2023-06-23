@@ -12,7 +12,7 @@ module.exports = {
 	},
 	// точка выхода
 	output: {
-		path: path.resolve(__dirname, './dist'),
+		path: path.resolve(__dirname, 'dist'),
 		filename: '[name].bundle.js',
 	},
 	// модули и загрузчики
@@ -20,9 +20,9 @@ module.exports = {
 		rules: [
 			// JavaScript
 			{
-					test: /\.js$/,
-					exclude: /node_modules/,
-					use: ['babel-loader'],
+				test: /\.js$/,
+				exclude: /node_modules/,
+				use: ['babel-loader'],
 			},
 			// Изображения
 			{
@@ -30,12 +30,28 @@ module.exports = {
 				type: 'asset/resource',
 				generator: {
 					filename: 'img/[name][ext]'
-				}
+				},
+				// Исключить папку со шрифтами
+				exclude: [
+					path.resolve(__dirname, 'src/fonts'),
+				]
 			},
 			// CSS, PostCSS, Sass
 			{
 				test: /\.(sa|sc|c)ss$/,
 				use: ['style-loader', 'css-loader', 'sass-loader'],
+			},
+			// Шрифты
+			{
+				test: /\.(woff2?|eot|ttf|otf|svg)$/i,
+				type: 'asset/resource',
+				generator: {
+					filename: 'fonts/[name][ext]'
+				},
+				// Исключить папку с картинками
+				exclude: [
+					path.resolve(__dirname, 'src/img'),
+				]
 			},
 		],
 	},

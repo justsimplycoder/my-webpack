@@ -1,7 +1,17 @@
 $font-color-red: lch(53 105 40);
 $font-color-grey: #808080;
 
+@font-face {
+	font-family: "NairiNormal";
+	src: url("../fonts/NairiNormal.eot?") format("eot"),
+			 url("../fonts/NairiNormal.woff2") format("woff2"),
+			 url("../fonts/NairiNormal.woff") format("woff"),
+			 url("../fonts/NairiNormal.ttf") format("truetype"),
+			 url("../fonts/NairiNormal.svg#NairiNormal") format("svg");
+}
+
 html {
+	font-family: 'NairiNormal';
 	color: $font-color-red;
 }
 

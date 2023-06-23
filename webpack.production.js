@@ -13,7 +13,7 @@ module.exports = {
 	},
 	// точка выхода
 	output: {
-		path: path.resolve(__dirname, './dist'),
+		path: path.resolve(__dirname, 'dist'),
 		filename: '[name].bundle.js',
 	},
 	// модули и загрузчики
@@ -57,12 +57,28 @@ module.exports = {
 				type: 'asset/resource',
 				generator: {
 					filename: 'img/[name][ext]'
-				}
+				},
+				// Исключить папку со шрифтами
+				exclude: [
+					path.resolve(__dirname, 'src/fonts'),
+				]
 			},
 			// CSS, PostCSS, Sass
 			{
 				test: /\.(sa|sc|c)ss$/,
 				use: [MiniCssExtractPlugin.loader, 'css-loader', 'postcss-loader', 'sass-loader'],
+			},
+			// Шрифты
+			{
+				test: /\.(woff2?|eot|ttf|otf|svg)$/i,
+				type: 'asset/resource',
+				generator: {
+					filename: 'fonts/[name][ext]'
+				},
+				// Исключить папку с картинками
+				exclude: [
+					path.resolve(__dirname, 'src/img'),
+				]
 			},
 		],
 	},

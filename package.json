@@ -4,7 +4,8 @@
   "description": "Мои настройки webpack",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve --config=webpack.development.js",
+    "server": "webpack serve --config=webpack.development.js",
+    "dev": "webpack --config=webpack.development.js",
     "build": "webpack --config=webpack.production.js"
   },
   "keywords": [],
