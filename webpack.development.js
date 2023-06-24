@@ -27,7 +27,7 @@ module.exports = {
 			},
 			// Изображения
 			{
-				test: /\.(jpe?g|png|webp|gif|svg)$/i,
+				test: /\.(jpe?g|png|webp|gif|svg|ico)$/i,
 				type: 'asset/resource',
 				generator: {
 					filename: 'img/[name][ext]'
@@ -69,6 +69,7 @@ module.exports = {
 				// <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 				'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
 			},
+			favicon: path.resolve(__dirname, './src/favicon.ico'),
 		}),
 		new HtmlWebpackPlugin({
 			title: '404',
@@ -78,6 +79,7 @@ module.exports = {
 				// <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 				'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
 			},
+			favicon: path.resolve(__dirname, './src/favicon.ico'),
 		})
 	],
 	devServer: {
