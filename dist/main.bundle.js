@@ -1,1 +1,0 @@
-(()=>{var e=document.createElement("h1");e.textContent="Заголовок первого уровня.",document.querySelector("#root").append(e)})();
