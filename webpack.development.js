@@ -70,7 +70,20 @@ module.exports = {
 			title: 'My webpack!',
 			template: path.resolve(__dirname, './src/template.html'), // шаблон
 			filename: 'index.html', // название выходного файла
+			meta: {
+				// <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+				'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
+			},
 		}),
+		new HtmlWebpackPlugin({
+			title: '404',
+			template: path.resolve(__dirname, './src/template.html'), // шаблон
+			filename: '404.html', // название выходного файла
+			meta: {
+				// <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+				'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
+			},
+		})
 	],
 	devServer: {
 		static: {
