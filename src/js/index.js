@@ -1,5 +1,4 @@
-import logWebpack from './img/logo-webpack.svg';
-import './styles/main.scss';
+import logWebpack from '../img/logo-webpack.svg';
 import text from './helpers.json';
 import WebpackInfo from './WebpackInfo.js';
 

@@ -1,5 +1,5 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const PugPlugin = require('pug-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
@@ -8,17 +8,23 @@ module.exports = {
 	mode: 'development',
 	// точка входа
 	entry: {
-		// Точка входа для javascript
-		main: path.resolve(__dirname, './src/index.js'),
+		index: path.resolve(__dirname, './src/pug/index.pug'),
+		// about: path.resolve(__dirname, './src/pug/about.pug'),
 	},
 	// точка выхода
 	output: {
-		path: path.resolve(__dirname, 'dist'),
+		path: path.resolve(__dirname, 'dist/'),
+		publicPath: '/',
 		filename: '[name].bundle.js',
 	},
 	// модули и загрузчики
 	module: {
 		rules: [
+			// pug
+			{
+				test: /\.pug$/,
+				loader: PugPlugin.loader,
+			},
 			// JavaScript
 			{
 				test: /\.js$/,
@@ -40,7 +46,7 @@ module.exports = {
 			// CSS, PostCSS, Sass
 			{
 				test: /\.(sa|sc|c)ss$/,
-				use: ['style-loader', 'css-loader', 'sass-loader'],
+				use: ['css-loader', 'sass-loader'],
 			},
 			// Шрифты
 			{
@@ -61,28 +67,24 @@ module.exports = {
 		// Плагин очистки директории dist при каждой сборке
 		new CleanWebpackPlugin(),
 		// Плагин создания HTML на основе шаблона
-		new HtmlWebpackPlugin({
-			title: 'My webpack!',
-			template: path.resolve(__dirname, './src/template.html'), // шаблон
-			filename: 'index.html', // название выходного файла
-			meta: {
-				// <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-				'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
+		new PugPlugin({
+			pretty: true, // форматирование HTML
+			css: {
+				filename: 'css/[name].bundle.css'
 			},
-			favicon: path.resolve(__dirname, './src/favicon.ico'),
-		}),
-		new HtmlWebpackPlugin({
-			title: '404',
-			template: path.resolve(__dirname, './src/template.html'), // шаблон
-			filename: '404.html', // название выходного файла
-			meta: {
-				// <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-				'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
+			js: {
+				filename: 'js/main.bundle.js',
 			},
-			favicon: path.resolve(__dirname, './src/favicon.ico'),
 		})
 	],
 	devServer: {
+		watchFiles: {
+			paths: ['src/**/*.*'],
+			//☝🏽 Enables HMR in these folders
+			options: {
+				usePolling: true
+			}
+		},
 		static: {
 			directory: path.join(__dirname, '../dist'),
 		},
