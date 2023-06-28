@@ -43,10 +43,10 @@ module.exports = {
 					path.resolve(__dirname, 'src/fonts'),
 				]
 			},
-			// CSS, PostCSS, Sass
+			// CSS, PostCSS, Stylus
 			{
-				test: /\.(sa|sc|c)ss$/,
-				use: ['css-loader', 'sass-loader'],
+				test: /\.(styl|css)$/,
+				use: ['css-loader', 'stylus-loader'],
 			},
 			// Шрифты
 			{
