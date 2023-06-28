@@ -4,6 +4,6 @@
 
 Ветки git:
 
-- main — основная ветка: js, image, font, генерация html;
+- main — основная ветка: js, image, font, генерация html, sass;
 - ts — отличие от ветки main, ипользуется TypeScript;
-- pug — используется шаблонизатор pug, можно использовать для вёрстки;
+- pug — для вёрстки: pug, stylus;
