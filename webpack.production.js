@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
+	target: 'browserslist',
 	// режим разработки 'development', 'production', 'none'
 	mode: 'production',
 	// точка входа
