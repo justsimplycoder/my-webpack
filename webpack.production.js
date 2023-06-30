@@ -5,6 +5,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
 	// режим разработки 'development', 'production', 'none'
 	mode: 'production',
+	// под какие браузеры собирать на продакшен
+	target: 'browserslist',
 	// точка входа
 	entry: {
 		index: path.resolve(__dirname, './src/pug/index.pug'),
