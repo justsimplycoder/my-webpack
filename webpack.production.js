@@ -10,8 +10,11 @@ module.exports = {
 	target: 'browserslist',
 	// точка входа
 	entry: {
-		// Точка входа для javascript
-		main: path.resolve(__dirname, './src/index.js'),
+		main: {
+			import: path.resolve(__dirname, './src/index.js'),
+			dependOn: 'react-vendors'
+		},
+		'react-vendors': ['react', 'react-dom', 'react-router-dom'],
 	},
 	// точка выхода
 	output: {
@@ -21,11 +24,16 @@ module.exports = {
 	// модули и загрузчики
 	module: {
 		rules: [
-			// JavaScript
+			// JavaScript, React
 			{
-				test: /\.js$/,
+				test: /\.(js|jsx)$/,
 				exclude: /node_modules/,
-				use: ['babel-loader'],
+				use: {
+					loader: "babel-loader",
+					options: {
+						presets: ["@babel/preset-env", "@babel/preset-react"],
+					},
+				},
 			},
 			// Изображения
 			{
@@ -103,15 +111,5 @@ module.exports = {
 			},
 			favicon: path.resolve(__dirname, './src/favicon.ico'),
 		}),
-		new HtmlWebpackPlugin({
-			title: '404',
-			template: path.resolve(__dirname, './src/template.html'), // шаблон
-			filename: '404.html', // название выходного файла
-			meta: {
-				// <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-				'viewport': 'width=device-width, initial-scale=1, shrink-to-fit=no',
-			},
-			favicon: path.resolve(__dirname, './src/favicon.ico'),
-		})
 	],
 }
