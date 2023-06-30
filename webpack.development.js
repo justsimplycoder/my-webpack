@@ -14,7 +14,7 @@ module.exports = {
 	// точка выхода
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		filename: '[name].bundle.js',
+		filename: 'js/[name].bundle.js',
 	},
 	// модули и загрузчики
 	module: {
