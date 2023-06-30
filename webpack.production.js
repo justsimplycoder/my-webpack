@@ -4,6 +4,7 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
+	// под какие браузеры собирать на продакшен
 	target: 'browserslist',
 	// режим разработки 'development', 'production', 'none'
 	mode: 'production',
@@ -15,7 +16,7 @@ module.exports = {
 	// точка выхода
 	output: {
 		path: path.resolve(__dirname, 'dist'),
-		filename: '[name].bundle.js',
+		filename: 'js/[name].[contenthash:10].js',
 	},
 	// модули и загрузчики
 	module: {
@@ -94,7 +95,7 @@ module.exports = {
 		new CleanWebpackPlugin(),
 		// Создание минифицированного css файла
 		new MiniCssExtractPlugin({
-			filename: "css/main.bundle.css",
+			filename: "css/main.[contenthash:10].css",
 		}),
 		// Плагин создания HTML на основе шаблона
 		new HtmlWebpackPlugin({
