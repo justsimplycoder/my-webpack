@@ -72,8 +72,8 @@ module.exports = {
 			},
 			// CSS, PostCSS, Sass
 			{
-				test: /\.(sa|sc|c)ss$/,
-				use: ['css-loader', 'postcss-loader', 'sass-loader'],
+				test: /\.(styl|css)$/,
+				use: ['css-loader', 'postcss-loader', 'stylus-loader'],
 			},
 			// Шрифты
 			{
@@ -96,10 +96,10 @@ module.exports = {
 		// Плагин создания HTML на основе шаблона
 		new PugPlugin({
 			css: {
-				filename: 'css/[name].bundle.css'
+				filename: 'css/[name].[contenthash:10].css'
 			},
 			js: {
-				filename: 'js/main.bundle.js',
+				filename: 'js/[name].[contenthash:10].js',
 			},
 		})
 	],
